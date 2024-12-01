@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+  --peach-pink: #FFB6A3; /* Màu hồng đào cho card */
+  --light-pink: #FFF0F0; /* Màu hồng trắng nhạt cho background */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --text-color: #4A4A4A;
+  --card-width-desktop: 350px;
+  --card-width-mobile: 90vw; /* Chiều rộng tương đối với viewport */
+  --image-size-desktop: 150px;
+  --image-size-mobile: 200px; /* Kích thước ảnh lớn hơn trên mobile */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--light-pink);
+}
+
+.wrapper,
+.wrapper .img-area,
+.social-icons a,
+.buttons button {
+  background: var(--peach-pink);
+  box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.5),
+              3px 3px 5px var(--shadow-color);
+}
+
+.wrapper {
+  position: relative;
+  width: var(--card-width-desktop);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.wrapper:hover {
+  transform: translateY(-5px);
+}
+
+.wrapper .img-area {
+  height: var(--image-size-desktop);
+  width: var(--image-size-desktop);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+}
+
+.img-area .inner-area {
+  height: calc(100% - 25px);
+  width: calc(100% - 25px);
+  border-radius: 50%;
+}
+
+.inner-area img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #FFF;
+}
+
+.wrapper .name {
+  font-size: 23px;
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 10px 0 5px 0;
+}
+
+.wrapper .about {
+  color: #666666;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.wrapper .social-icons {
+  margin: 15px 0 25px 0;
+}
+
+.social-icons a {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  margin: 0 5px;
+  display: inline-flex;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
+.social-icons a i {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  line-height: 40px;
+}
+
+.social-icons a.fb i {
+  color: #4267B2;
+}
+
+.social-icons a.twitter i {
+  color: #1DA1F2;
+}
+
+.social-icons a.insta i {
+  color: #E1306C;
+}
+
+.social-icons a.yt i {
+  color: #ff0000;
+}
+
+/* Hiệu ứng hover cho social icons */
+.social-icons a:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* Điều chỉnh màu tuyết */
+.snowflake {
+  color: var(--peach-pink) !important;
+  text-shadow: 0 0 5px rgba(255, 182, 163, 0.8) !important;
+}
+
+/* Media Queries cho điện thoại */
+@media (max-width: 768px) {
+  .wrapper {
+    width: var(--card-width-mobile);
+    min-width: 320px;
+    max-width: 450px; /* Giới hạn kích thước tối đa */
+    padding: 40px 20px; /* Padding lớn hơn */
+    margin: 20px;
+  }
+
+  .wrapper .img-area {
+    height: var(--image-size-mobile);
+    width: var(--image-size-mobile);
+  }
+
+  .wrapper .name {
+    font-size: 28px; /* Font size lớn hơn */
+    margin: 15px 0 10px 0;
+  }
+
+  .wrapper .about {
+    font-size: 18px; /* Font size lớn hơn */
+  }
+
+  .social-icons a {
+    height: 50px; /* Icons lớn hơn */
+    width: 50px;
+    margin: 0 8px;
+  }
+
+  .social-icons a i {
+    line-height: 50px;
+    font-size: 20px;
+  }
+}
+
+/* Media Queries cho màn hình rất nhỏ */
+@media (max-width: 320px) {
+  .wrapper {
+    min-width: 280px;
+    padding: 20px;
+  }
+
+  .wrapper .img-area {
+    height: 180px; /* Điều chỉnh nhỏ hơn cho màn hình rất nhỏ */
+    width: 180px;
+  }
+
+  .wrapper .name {
+    font-size: 24px;
+  }
+
+  .wrapper .about {
+    font-size: 16px;
+  }
+}
+
+/* Media Queries cho màn hình lớn */
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 400px; /* Lớn hơn một chút trên desktop */
+  }
+
+  .wrapper .img-area {
+    height: 180px;
+    width: 180px;
+  }
+}
+
+/* Media Queries cho orientation landscape trên mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .wrapper {
+    margin: 40px auto;
+  }
+
+  .wrapper .img-area {
+    height: 160px; /* Nhỏ hơn một chút khi xoay ngang */
+    width: 160px;
+  }
+}
+
+/* Tối ưu cho thiết bị có pixel ratio cao */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .wrapper {
+    box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.5),
+                4px 4px 10px var(--shadow-color);
+  }
+}
